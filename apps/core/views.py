@@ -25,7 +25,12 @@ class ContactView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['form'] = ContactForm()
         return context
+    
+class PrivacyView(TemplateView):
+    template_name = 'home/privacy.html'
 
+class TermsView(TemplateView):
+    template_name = 'home/terms.html'
 
 def contact_view(request):
     if request.method == 'POST':

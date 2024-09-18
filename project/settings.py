@@ -13,6 +13,10 @@ import environ
 import os
 from pathlib import Path
 
+# Inicialize o django-environ
+env = environ.Env()
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +33,7 @@ STATIC_DIR = BASE_DIR / 'static'
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t=(veh!2rv#$0@%ja4)pi09pnld@-@dn&xuh&g8ejy%8#vf8s0'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -137,10 +141,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # EMAIL
-# Inicialize o django-environ
-env = environ.Env()
-environ.Env.read_env()
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
