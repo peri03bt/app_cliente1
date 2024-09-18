@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Contact - The Owl{% endblock %} 
+
+{% block header %}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xxl-8">
+                <div class="text-center my-5">
+                    <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Contact Us</span></h2>
+                    <p class="lead text-muted mb-4">We’re here to help and answer any question you might have. We look forward to hearing from you!</p>
+                    <form id="contactForm" method="post" action="{% url 'email' %}">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
+                            <label for="name" class="text-muted">Full name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
+                            <label for="email" class="text-muted">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" required />
+                            <label for="phone" class="text-muted">Phone number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                            <label for="message" class="text-muted">Message</label>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock header %}
+
+{% block extra_script %}
+<!-- Outros links e scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.7/inputmask.min.js" integrity="sha512-srNUelPiQKo1o3xB5I5rsDPVYYqPfuFvsUXpLg7ytdkp/OyZmLLF1DK1LMuSdbexd4B68lsymoeF79KO9GHloQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/masks.js' %}"></script>
+
+{% endblock extra_script %}
