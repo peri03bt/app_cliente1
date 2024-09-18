@@ -342,3 +342,34 @@ footer .mx-1 {
   font-size: 1rem; /* Tamanho pequeno, ajuste conforme necessário */
 }
 
+/* Remove border from navbar-toggler and customize the button */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  width: 24px;
+  height: 2px;
+  background-color: #000;
+  display: block;
+  position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background-color: #000;
+  display: block;
+  position: absolute;
+  left: 0;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px;
+}
