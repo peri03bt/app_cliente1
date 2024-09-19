@@ -68,6 +68,21 @@ def contact_view(request):
                 fail_silently=False,
             )
 
+             # Enviar e-mail de agradecimento ao usuário
+            thank_you_message = (
+                f"Dear {name},\n\n"
+                "Thank you for reaching out to us. We have received your message and will respond to you shortly.\n\n"
+                "Best regards,\n"
+                "The Owl"
+            )
+            send_mail(
+                'Thank You for Contacting Us',
+                thank_you_message,
+                email_host_user,
+                [email],
+                fail_silently=False,
+            )
+
             messages.success(request, 'Your message has been sent successfully!')
             return redirect('home')
         else:
