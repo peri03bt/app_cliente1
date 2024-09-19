@@ -15,10 +15,12 @@ from pathlib import Path
 
 # Inicialize o django-environ
 env = environ.Env()
-environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Leia o arquivo .env
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Diretórios de Aplicativos
 APPS_DIR = BASE_DIR / 'apps'
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'imagekit',
     'apps.core',
 ]
 
@@ -147,3 +150,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')  
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')  
+
+
+# data protect
+CLIENT_SMS = env('CLIENT_SMS')
+CLIENT_NUMBER_STR = env('CLIENT_NUMBER_STR')
+
+# media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

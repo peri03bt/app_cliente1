@@ -1,6 +1,6 @@
 
 from django import forms
-from .models import Contact  
+from .models import Contact, PostProjects 
 
 
 class ContactForm(forms.Form):
@@ -25,3 +25,8 @@ class ContactForm(forms.Form):
         'id': 'message',
         'style': 'height: 10rem'
     }))
+
+class PostProjectsForm(forms.ModelForm):
+    class Meta:
+        model = PostProjects
+        fields = ['title', 'image', 'description']
